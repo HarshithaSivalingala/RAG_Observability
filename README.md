@@ -104,16 +104,16 @@ Retrieval latency shows as 0ms for all queries. This is because Verba streams LL
 You need four things running simultaneously:
 
 ```bash
-# 1. Start Ollama
+1. Start Ollama
 brew services start ollama
 
-# 2. Start Verba
+2. Start Verba
 cd Verba && docker compose up -d
 
-# 3. Start the proxy (from verba-observability/backend)
+3. Start the proxy (from verba-observability/backend)
 uvicorn main:app --port 8001 --reload
 
-# 4. Start the dashboard (from verba-observability/frontend)
+4. Start the dashboard (from verba-observability/frontend)
 npm run dev
 ```
 
