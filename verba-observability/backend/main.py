@@ -1,15 +1,6 @@
 """
 main.py — Reverse Proxy + Metrics API for Verba Observability
 
-Changes from v2:
-- VerbaMessageAdapter isolates all message parsing in one place
-- Cached responses use same JSON format as Verba live responses
-- Session ID uses HttpOnly cookie end-to-end — consistent across requests
-- HTTP proxy uses params=dict instead of manual query string building
-- _filter_headers and _build_proxy_url extracted as testable pure functions
-- Cache actually serves stored response — no Verba call on hit
-- Background cache cleanup task cancels cleanly on shutdown
-- CORS restricted to localhost origins only
 """
 
 import asyncio
