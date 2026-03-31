@@ -46,8 +46,6 @@ CACHE_TTL_SECONDS = 300
 SLOW_QUERY_THRESHOLD_MS = 10_000
 SESSION_COOKIE_NAME = "verba_obs_session"
 
-# Headers that are connection-specific and must never be forwarded.
-# Forwarding them breaks HTTP/1.1 keep-alive and HTTP/2 framing.
 HOP_BY_HOP_HEADERS = frozenset({
     "connection", "keep-alive", "proxy-authenticate", "proxy-authorization",
     "te", "trailers", "transfer-encoding", "upgrade",
@@ -478,7 +476,7 @@ async def websocket_proxy(websocket: WebSocket, path: str):
                         await websocket.send_text(raw)
                         continue
 
-                    # Log any keys we don't recognise — helps detect schema changes
+                    # Log any keys we don't recognise helps detect schema changes
                     known = {
                         "chunks", "documents", "message", "text", "content",
                         "error", "status", "type", "cached", "finish_reason",
